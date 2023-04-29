@@ -13,7 +13,8 @@ function imprimeCotacao(lista, nome, valor) {
 
     const plurais = {
         'dolar' : 'dolares',
-        'iene' : 'ienes'
+        'iene' : 'ienes',
+        'euro' : 'euros'
     }
 
     for(let multiplicador = 1; multiplicador <= 1000; multiplicador *= 10) {

@@ -61,3 +61,28 @@ workerIene.addEventListener("message", event => {
     selecionaCotacao("iene", valor);
     adicionarDados(graficoParaIene, tempo, valor);
 })
+
+
+const graficoEuro = document.getElementById('graficoEuro');
+
+const graficoParaEuro = new Chart(graficoEuro, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Euro',
+            data: [],
+            borderWidth: 1
+        }]
+    },
+});
+
+let workerEuro = new Worker('./script/workers/workerEuro.js');
+workerEuro.postMessage('euro');
+
+workerEuro.addEventListener("message", event => {
+    let tempo = geraHorario();
+    let valor = event.data.ask;
+    selecionaCotacao("euro", valor);
+    adicionarDados(graficoParaEuro, tempo, valor);
+})
